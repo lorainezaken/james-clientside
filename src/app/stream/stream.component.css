@@ -6,6 +6,9 @@ body {
 	width: 1000px;
 	margin: 0 auto;
 }
+p {
+	display: inline-block;
+}
 h1{
 	font-size: 60px;
 	text-align: center;
@@ -45,7 +48,6 @@ button{
 #news{
 	position: absolute;
 	width: 400px;
-	height: 200px;
 	background: #58aeac;
 	text-align: left;
 }
@@ -65,7 +67,6 @@ button{
 	border-radius: 15px;
 	width: 100px;
 	color: #ffffff;
-	float:right;
-	position: relative;
-	top: 170px;
+	position: inherit;
+    margin: 17px;
 }

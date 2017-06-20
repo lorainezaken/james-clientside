@@ -5,24 +5,16 @@ import { Headers, Http, RequestOptions, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class StreamService {
+export class SongService {
     constructor(private http: Http) { }
 
-    getSongs(streamId): Promise<string[]> {
-         return this.http.get("http://james-server.herokuapp.com/stream?userId=5947ff8a9712383368c123f4")
+    getSongs(): Promise<any[]> {
+         return this.http.get("http://james-server.herokuapp.com/songs")
              .toPromise()
              .then(response => {
-                 return response.json().stream.songs
+                 return response.json().songs
              })
              .catch(this.handleError);
-    }
-
-    addSongToStream(streamId, songId): Promise<any> {
-        return this.http.post(`http://james-server.herokuapp.com/stream/${streamId}/songs?songIds=${songId}`, {})
-            .toPromise()
-            .then(response => {
-                return "ok";
-            })
     }
     
     private handleError(error: any): Promise<any> {
