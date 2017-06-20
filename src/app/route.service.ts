@@ -8,6 +8,6 @@ const appRoutes: Routes = [
     // { path: '', component: AppComponent, canActivate: [AuthGuard] },
  
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'http://james-server.herokuapp.com/FunkGenres' }
 ];
 export const routing = RouterModule.forRoot(appRoutes);
