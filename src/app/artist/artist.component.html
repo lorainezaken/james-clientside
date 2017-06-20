@@ -1,0 +1,16 @@
+<main class="wrapper">
+  <div>
+      <h1>James</h1>
+		<h2>and which funk artists you like?</h2>
+      <div id="choice">
+        <button
+        (click)="onArtistClick(artist)"
+          [class.selected]="selectedArtists.includes(artist)"
+         *ngFor="let artist of artists">{{artist}}</button>
+      </div>
+      <section>
+        <a id="back" href="index.html">back</a>
+        <a id="next" (click)="goToStream()">next</a>
+      </section>
+    </div>
+</main>

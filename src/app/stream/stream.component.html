@@ -1,0 +1,14 @@
+<main class="wrapper">
+	<div >
+		<h1>James</h1>
+		<h2>what's new</h2>
+		<div id="news">
+		<button id="addto">add to stream</button>
+		</div>	
+		<div id="stream">
+			<div *ngFor="let song of streamSongs">
+				<p>{{song.name}}</p>
+			</div>
+		</div>	
+	</div>
+</main>

@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import { GenreService } from './genre.service';
 import { OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import { AppRoutingModule } from './app-rounting.module';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [GenreService]
+  providers: []
 })
 export class AppComponent implements OnInit{
-  constructor(private genreService: GenreService) {}
+  constructor(private router: Router) {}
   
-  genres: string[]
   ngOnInit() {
-    this.genreService.getGenres()
-      .then(genres => {
-        this.genres = genres;
-      })
+    this.router.navigate(['./genre']);
   }
+  
 }
+//  this.router.navigate(['./artist'])
+// this.parentRouter = Router;
+// this.parentRouter.navigateByUrl('/artist');

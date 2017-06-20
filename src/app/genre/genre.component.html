@@ -1,0 +1,16 @@
+<main class="wrapper">
+  <div>
+      <h1>James</h1>
+      <h2>tell james what kind of funk music you like?</h2>
+      <div id="choice">
+        <button 
+          (click)="onGenreClick(genre)"
+          [class.selected]="selectedGenres.includes(genre)"
+           *ngFor="let genre of genres">{{genre}}</button>
+      </div>
+      <section>
+        <a id="back" href="">back</a>
+        <a id="next" (click)="getArtists()" >next</a>
+      </section>
+    </div>
+</main>
