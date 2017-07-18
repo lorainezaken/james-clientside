@@ -1,0 +1,72 @@
+:host {
+	flex: 1;
+	display: flex;	
+	background-color: #58aeac;
+}
+
+:host span {
+	flex: 1;
+}
+
+main {
+	display: flex;
+	flex: 11;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url("../../assets/BackgroundHome.png");
+}
+
+.home-body {
+	flex: 1;
+	text-align: center;
+	color: white;
+	flex-flow: column;
+	display: flex;
+}
+
+.home-body .home-content {
+	flex: 3;
+}
+
+.home-content {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+.home-content h2 {
+	font-size: 2em;
+    margin-bottom: 0px;
+}
+
+.home-content h1 {
+	font-size: 5.1em;
+    margin-top: 0px;
+    line-height: 0.85em;
+}
+
+.home-content h4 {
+	font-weight: normal;
+	font-size: 1.4em;
+	padding-bottom: 40px;
+}
+
+.home-content button {
+	outline: none;
+	font-size: 25px;
+    background: transparent;
+    border: 6px solid white;
+    font-family: 'Lato', sans-serif;
+    border-radius: 100px;
+    color: white;
+    max-width: 388px;
+    max-height: 65px;
+    min-width: 320px;
+    margin-bottom: 29px;
+    min-height: 70px;
+}
+.home-content button:hover {
+	background-color: white;
+	color: black;
+	cursor: pointer;
+}

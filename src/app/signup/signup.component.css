@@ -1,0 +1,98 @@
+:host {
+	flex: 1;
+	display: flex;	
+	background-color: #d9c004;
+}
+
+:host span {
+	flex: 1;
+}
+
+main {
+	display: flex;
+	flex: 11;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url("../../assets/BackgroundSignup.png");
+}
+
+.signup-body {
+	flex: 1;
+	text-align: center;
+	color: white;
+	flex-flow: column;
+	display: flex;
+}
+
+.signup-body .signup-content {
+	flex: 2;
+}
+
+.signup-content {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+.signup-content h2 {
+	font-size: 2em;
+    margin-bottom: 0px;
+}
+
+.signup-content h1 {
+	font-size: 5.1em;
+    margin-top: 0px;
+    line-height: 0.85em;
+}
+
+.signup-content h4 {
+	font-weight: normal;
+	font-size: 1.4em;
+	padding-bottom: 40px;
+}
+
+.signup-content button {
+	outline: none;
+	font-size: 16px;
+    background: transparent;
+    border: 3px solid white;
+    font-family: 'Lato', sans-serif;
+    border-radius: 100px;
+    color: white;
+    max-width: 362px;
+    max-height: 65px;
+    min-width: 208px;
+    margin-top: 10px;
+    margin-bottom: 29px;
+    min-height: 43px;
+}
+.signup-content button:hover {
+	background-color: white;
+	color: black;
+	cursor: pointer;
+}
+
+.signup-content input {
+	outline: none;
+	background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 20px;
+	min-width: 200px;
+	color: white;
+}
+.signup-content input::-webkit-input-placeholder{ 
+	color: azure;
+}
+
+.oneOfthree {
+	height: 40px;
+}
+
+.profileAdd {
+	height: 110px;
+	margin-top: 45px;
+	margin-bottom: 30px;
+}

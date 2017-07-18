@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { ArtistComponent } from './artist/artist.component';
 import { StreamComponent } from './stream/stream.component';
 import {GenreComponent} from './genre/genre.component';
+import {HomeComponent} from './home/home.component';
+import {SignupComponent} from './signup/signup.component';
+
 import {RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-rounting.module';
 
@@ -15,7 +18,9 @@ import { AppRoutingModule } from './app-rounting.module';
     AppComponent,
     ArtistComponent,
     StreamComponent,
-    GenreComponent
+    GenreComponent,
+    HomeComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
