@@ -36,10 +36,14 @@ export class ArtistComponent implements OnInit {
         this.selectedArtists.push(artist);
   }
 
-  goToStream() {
+  gotoGenres(){
+    this.router.navigate(['./genre']);
+  }
+
+  Submit() {
     this.artistService.addArtistsSongsToStream(this.selectedArtists)
       .then(() => {
-        this.router.navigate(['./stream'], { queryParams: { streamId: "5947ff8b9712383368c123f5" }});
+        this.router.navigate(['./complete'], { queryParams: { streamId: "5947ff8b9712383368c123f5" }});
       })
   }
 }

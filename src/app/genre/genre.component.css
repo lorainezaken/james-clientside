@@ -1,75 +1,131 @@
-body {
-	font-family: Arial;
-	
-}
-.wrapper {
-	width: 1000px;
-	margin: 0 auto;
-}
-h1{
-	font-size: 60px;
-	text-align: center;
-}
-h2{
-	text-align: center;
-	padding-bottom:30px;
-}
-main section{
-	width: 200px;
-	margin: 0 auto;
-	padding-top: 200px;
-}
-button{
-	font-size: 18px;
-	background: #ffffff;
-	border: 2px solid #8c8c8c;
-	font-family: 'Lato', sans-serif;
-	border-radius: 15px;
-	width: 120px;
-	color: #8c8c8c;
-	margin-right: 10px;
+:host {
+	flex: 1;
+	display: flex;	
+	background-color: #d9c004;
 }
 
-.selected {
-	background-color: blue;
+:host span {
+	flex: 1;
 }
-#choice{
+
+main {
+	display: flex;	
+	flex: 11;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url("../../assets/BackgroundSettingSelection.png");
+}
+
+.signup-body {
+	flex: 1;
 	text-align: center;
+	color: white;
+	flex-flow: column;
+	display: flex;
 }
-#next{
-	font-size: 18px;
-	color: #8c8c8c;
-	float:right;
+
+.signup-body .signup-content {
+	flex: 2;
 }
-#back{
-	font-size: 18px;
-	color: #8c8c8c;
+
+.signup-content {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+.signup-content h2 {
+	font-size: 2em;
+    margin-bottom: 0px;
+}
+
+.signup-content h1 {
+	font-size: 5.1em;
+    margin-top: 0px;
+    line-height: 0.85em;
+}
+
+.signup-content h4 {
+	font-weight: normal;
+	font-size: 1.4em;
+	padding-bottom: 40px;
+}
+
+.signup-content button {
+	outline: none;
+	font-size: 16px;
+    background: transparent;
+    border: 3px solid white;
+    font-family: 'Lato', sans-serif;
+    border-radius: 100px;
+    color: white;
+    max-width: 362px;
+    max-height: 65px;
+    min-width: 250px;
+    margin-top: 10px;
+    margin-bottom: 29px;
+    min-height: 43px;
+}
+.signup-content button:hover {
+	background-color: white;
+	color: black;
+	cursor: pointer;
+}
+
+.oneOfthree {
+	height: 55px;
+}
+
+.james-inline-logo{
+	font-family: Arista;
+	font-weight: 500;
+	font-size:45px;
+}
+
+.oneLiner {
+	margin-bottom:-7px;
+	display:inline;
+}
+
+.tell-james-label{
+	margin-right:4px;
+	margin-top: 17px;
+	font-size:25px;
+}
+.tell-james-paragraph{
+	font-size:25px;	
+}
+.oneLiner > div{
 	float:left;
 }
-#news{
-	position: absolute;
-	width: 400px;
-	height: 200px;
-	background: #58aeac;
-	text-align: left;
+.genre-button.selected{
+	background-color: white !important;
+	color:black !important;
 }
-#stream{
-	width: 350px;
-	height: 500px;
-	background: #e58b01;
-	text-align: left;
-	position: relative;
-	float:right;
+.genre-button {
+	margin-bottom:0px !important;
+	margin-left:7px;
+	margin-right:7px;
+	min-width: 110px !important;
+    min-height: 36px !important;
 }
-#addto{
-	font-size: 10px;
-	background: #58aeac;
-	border: 2px solid #ffffff;
-	font-family: 'Lato', sans-serif;
-	border-radius: 15px;
-	width: 100px;
-	color: #ffffff;
-	float:right;
-	position: relative;
-	top: 170px;
+.choice{
+	max-width:650px;
+	margin-top:40px;
+}
+#genres .genre-button:nth-child(8n+1){
+	margin-left:50px !important;
+}
+#genres .genre-button:nth-child(8n){
+	margin-right:50px !important;
+}
+.bottom-menu{
+	margin-top:105px;
+}
+.bottom-menu a {
+	text-decoration: underline;
+    margin-left: 55px;
+    margin-right: 55px;
+	font-size: 25px;	
+	cursor: pointer;
 }

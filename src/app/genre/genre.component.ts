@@ -32,6 +32,10 @@ export class GenreComponent implements OnInit{
         this.selectedGenres.push(genre);
   }
 
+  gotoSignup() {
+    this.router.navigate(['./signup']);
+  }
+
   getArtists() {
     this.router.navigate(['./artist'], { queryParams: { genres: this.selectedGenres.join(',') }});
   }

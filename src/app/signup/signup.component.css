@@ -61,7 +61,7 @@ main {
     color: white;
     max-width: 362px;
     max-height: 65px;
-    min-width: 208px;
+    min-width: 250px;
     margin-top: 10px;
     margin-bottom: 29px;
     min-height: 43px;
@@ -78,21 +78,22 @@ main {
     border: 0;
     border-bottom: 2px solid white;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 13px;
     height: 20px;
 	min-width: 200px;
 	color: white;
+	font-size:20px;
 }
 .signup-content input::-webkit-input-placeholder{ 
 	color: azure;
 }
 
 .oneOfthree {
-	height: 40px;
+	height: 50px;
 }
 
 .profileAdd {
-	height: 110px;
-	margin-top: 45px;
+	height: 140px;
+	margin-top: 25px;
 	margin-bottom: 30px;
 }

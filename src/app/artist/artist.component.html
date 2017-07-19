@@ -1,16 +1,28 @@
-<main class="wrapper">
-  <div>
-      <h1>James</h1>
-		<h2>and which funk artists you like?</h2>
-      <div id="choice">
-        <button
-        (click)="onArtistClick(artist)"
+<span></span>
+<main class="artist">
+  <div class="floating-corner-container">
+    <div class="james-corner-box">
+      <span class="james-corner-logo">
+        James
+      </span>
+    </div>
+  </div>
+  <div class="signup-body">
+      <span></span>
+      <div class="signup-content">
+        <img class="oneOfthree" src="../../assets/3of3.png" />
+      <div class="tell-james-paragraph">and Which funk artists you like?</div>
+      <div class="choice">
+        <button class="artist-button" (click)="onArtistClick(artist)"
           [class.selected]="selectedArtists.includes(artist)"
-         *ngFor="let artist of artists">{{artist}}</button>
+        *ngFor="let artist of artists">{{artist}}</button>
       </div>
-      <section>
-        <a id="back" href="index.html">back</a>
-        <a id="next" (click)="goToStream()">next</a>
+      <section class="bottom-menu">
+        <a id="back" (click)="gotoGenres()">back</a>
+        <a id="next" (click)="Submit()">next</a>
       </section>
     </div>
+    <span></span>
+  </div>
 </main>
+<span></span>

@@ -1,16 +1,29 @@
-<main class="wrapper">
-  <div>
-      <h1>James</h1>
-      <h2>tell james what kind of funk music you like?</h2>
-      <div id="choice">
-        <button 
-          (click)="onGenreClick(genre)"
+<span></span>
+<main class="genre">
+  	<div class="floating-corner-container">
+		<div class="james-corner-box">
+			<span class="james-corner-logo">
+				James
+			</span>
+		</div>
+  </div>
+  <div class="signup-body">
+      <span></span>
+      <div class="signup-content">
+        <img class="oneOfthree" src="../../assets/2of3.png" />
+      <div class="oneLiner"> <div class="tell-james-label">Tell</div> <div class="james-inline-logo">James</div><div class="tell-james-label">,</div> </div>
+      <div class="tell-james-paragraph">What kind of funk music you like?</div>
+      <div class="choice" id="genres">
+        <button class="genre-button" (click)="onGenreClick(genre)"
           [class.selected]="selectedGenres.includes(genre)"
            *ngFor="let genre of genres">{{genre}}</button>
       </div>
-      <section>
-        <a id="back" href="">back</a>
+      <section class="bottom-menu">
+        <a id="back" (click)="gotoSignup()">back</a>
         <a id="next" (click)="getArtists()" >next</a>
       </section>
+		  </div>
+		<span></span>
     </div>
 </main>
+<span></span>

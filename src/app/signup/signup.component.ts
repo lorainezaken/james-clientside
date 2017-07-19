@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit{
   }
 
   submit() {
-    
+        this.router.navigate(['./genre']);
+
   }
 }

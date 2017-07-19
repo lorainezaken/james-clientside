@@ -6,6 +6,7 @@ import { StreamComponent } from './stream/stream.component';
 import { GenreComponent } from './genre/genre.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
+import { CompleteComponent } from './complete/complete.component';
 
 const appRoutes: Routes =[
     { path: '', redirectTo: '/index', pathMatch:'full'},
@@ -13,7 +14,8 @@ const appRoutes: Routes =[
     { path: 'signup', component: SignupComponent },
     { path: 'genre', component: GenreComponent },
     { path: 'artist', component: ArtistComponent },
-    { path: 'stream', component: StreamComponent }
+    { path: 'stream', component: StreamComponent },
+    { path: 'complete', component: CompleteComponent }
 ];
 
 @NgModule({

@@ -9,6 +9,7 @@ import { StreamComponent } from './stream/stream.component';
 import {GenreComponent} from './genre/genre.component';
 import {HomeComponent} from './home/home.component';
 import {SignupComponent} from './signup/signup.component';
+import {CompleteComponent} from './complete/complete.component';
 
 import {RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-rounting.module';
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-rounting.module';
     StreamComponent,
     GenreComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    CompleteComponent
   ],
   imports: [
     BrowserModule,
