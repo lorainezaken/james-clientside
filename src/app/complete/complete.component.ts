@@ -16,6 +16,6 @@ export class CompleteComponent implements OnInit{
   }
 
   goToStream() {
-      this.router.navigate(['./stream'], { queryParams: { streamId: "5947ff8b9712383368c123f5" }});
+      this.router.navigate(['./stream'], { queryParams: { streamId: "5947ff8b9712383368c123f5" } });
   }
 }

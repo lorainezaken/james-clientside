@@ -1,72 +1,94 @@
-body {
-	font-family: Arial;
-	
+:host {
+	flex: 1;
+	display: flex;	
+	background-color: #58aeac;
 }
-.wrapper {
-	width: 1000px;
-	margin: 0 auto;
+
+:host span {
+	flex: 1;
 }
-p {
-	display: inline-block;
+
+main {
+	display: flex;	
+	flex: 11;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url("../../assets/BackgroundHome.png");
 }
-h1{
-	font-size: 60px;
-	text-align: center;
+.wrapper{
+	width:100%;
 }
-h2{
-	text-align: center;
-	padding-bottom:30px;
+.header{
+	height:12%;
 }
-main section{
-	width: 200px;
-	margin: 0 auto;
-	padding-top: 200px;
+.content{
+    padding-left: 90px;
+	padding-right: 90px;
+	height: 88%;
+	overflow-y:scroll;
 }
-button{
-	font-size: 18px;
-	background: #ffffff;
-	border: 2px solid #8c8c8c;
-	font-family: 'Lato', sans-serif;
-	border-radius: 15px;
-	width: 120px;
-	color: #8c8c8c;
-	margin-right: 10px;
+::-webkit-scrollbar{
+	width:0px;
+	background: transparent;
 }
-#choice{
-	text-align: center;
+.nav{
+	margin-bottom:20px;
 }
-#next{
-	font-size: 18px;
-	color: #8c8c8c;
-	float:right;
+.nav a{
+	color:white !important;
+	font-size: 25px;	
+	cursor: pointer;
+	text-decoration: none;
+    margin-right: 20px;
+	padding-bottom:2px;
 }
-#back{
-	font-size: 18px;
-	color: #8c8c8c;
+.nav a:hover{
+	border-bottom:1px solid white;
+}
+.left-side{
+	width:60%;
 	float:left;
 }
-#news{
-	position: absolute;
-	width: 400px;
-	background: #58aeac;
-	text-align: left;
+.right-side{
+	width:40%;
+	float:left;
 }
-#stream{
-	width: 350px;
-	height: 500px;
-	background: #e58b01;
-	text-align: left;
-	position: relative;
-	float:right;
+.stream{
+	height: 600px;
+	margin-left: 50px;
+	background-color:#e58b01;
+	box-shadow: -3px 3px 5px rgba(28,5,5,0.35);
 }
-#addto{
-	font-size: 10px;
-	background: #58aeac;
-	border: 2px solid #ffffff;
-	font-family: 'Lato', sans-serif;
-	border-radius: 15px;
-	width: 100px;
-	color: #ffffff;
-	position: inherit;
-    margin: 17px;
+.stream h3, .stream p {
+	margin: 5px 0;
+}
+.stream p{
+	font-size:13px;
+	color: rgb(247,219,146);
+}
+.stream-header{
+	padding: 5px 30px;
+}
+.md-6{
+	width:60%;
+	float:left;
+}
+.md-4{
+	width:40%;
+	float:left;
+}
+.stream-player{
+	margin: 25px 35px;
+}
+.song-artist{
+	color:black;
+}
+.song-image{
+    width: 90%;
+	background-color: black; /* for now */
+    min-height: 100px; /* for now */
+}
+.stream h4{
+	margin-top:0px;
+	margin-bottom:5px;
 }

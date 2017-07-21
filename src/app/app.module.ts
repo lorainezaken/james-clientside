@@ -10,6 +10,8 @@ import {GenreComponent} from './genre/genre.component';
 import {HomeComponent} from './home/home.component';
 import {SignupComponent} from './signup/signup.component';
 import {CompleteComponent} from './complete/complete.component';
+import { NewPlaylistComponent } from './newPlaylist/newPlaylist.component';
+import { FollowingComponent } from './following/following.component';
 
 import {RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-rounting.module';
@@ -22,7 +24,9 @@ import { AppRoutingModule } from './app-rounting.module';
     GenreComponent,
     HomeComponent,
     SignupComponent,
-    CompleteComponent
+    CompleteComponent,
+    NewPlaylistComponent,
+    FollowingComponent
   ],
   imports: [
     BrowserModule,
