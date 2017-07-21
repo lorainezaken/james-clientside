@@ -15,7 +15,7 @@
       <div class="choice">
         <button class="artist-button" (click)="onArtistClick(artist)"
           [class.selected]="selectedArtists.includes(artist)"
-        *ngFor="let artist of artists">{{artist}}</button>
+        *ngFor="let artist of artists">{{artist.artistName}}</button>
       </div>
       <section class="bottom-menu">
         <a id="back" (click)="gotoGenres()">back</a>

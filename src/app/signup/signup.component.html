@@ -11,12 +11,14 @@
 	<div class="signup-body">
 		<span></span>
 		<div class="signup-content">
-			<img class="oneOfthree" src="../../assets/1of3.png" />
-			<img class="profileAdd" src="../../assets/profilePictureAdd.png" />
-			<input type="text" placeholder="user name"/>
-			<input type="email" placeholder="e-mail"/>
-			<input type="password" placeholder="password"/>
-			<button (click)="submit()">Submit</button>
+      <img class="oneOfthree" src="../../assets/1of3.png" />
+			<img (click)="file.click()"  class="profileAdd" src="{{profilePic}}" />
+			<form #signupForm="ngForm" (ngSubmit)="submit()">
+				<input #username type="text" placeholder="user name" [(ngModel)]="model.username" name="username" required/>
+				<input #email type="email" placeholder="e-mail" [(ngModel)]="model.email" name="email" required/>
+				<input #password type="password" placeholder="password" [(ngModel)]="model.password" name="password" required/>
+				<button type="submit" [disabled]="!signupForm.form.valid">Submit</button>
+			</form>
 			<span style="flex-grow: 1"></span>
 		</div>
 		<span></span>
@@ -24,3 +26,4 @@
 	<span></span>
 </main>
 <span></span>
+<input (change)="uploadFile($event)" style="display:none;" type="file" accept="image/*" #file>

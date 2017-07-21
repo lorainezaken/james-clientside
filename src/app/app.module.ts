@@ -13,6 +13,7 @@ import {CompleteComponent} from './complete/complete.component';
 import { NewPlaylistComponent } from './newPlaylist/newPlaylist.component';
 import { FollowingComponent } from './following/following.component';
 
+import { LocalStorageModule } from 'angular-2-local-storage';
 import {RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-rounting.module';
 
@@ -32,6 +33,11 @@ import { AppRoutingModule } from './app-rounting.module';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
+    FormsModule,
+    LocalStorageModule.withConfig({
+        prefix: 'james',
+        storageType: 'localStorage'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

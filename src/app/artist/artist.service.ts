@@ -8,11 +8,11 @@ import 'rxjs/add/operator/toPromise';
 export class ArtistService {
     constructor(private http: Http) { }
 
-    getArtists(genres: string[]): Promise<string[]> {
+    getArtists(genres: string[]): Promise<any[]> {
          return this.http.get("http://james-server.herokuapp.com/funkGenresArtists?genreIds=5945705f007535073863da1b,594574ad3536f62924e10fc0")
              .toPromise()
              .then(response => {
-                 return response.json().artists.map(artist => artist.artistName) as string[]
+                 return response.json().artists.map(artist => artist) as any[]
              })
              .catch(this.handleError);
     }
