@@ -4,8 +4,10 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "postinstall": "ng build --aot -prod",
+    "start": "node Server.js",
+    "serve": "ng serve",
+    "build": "ng build --deploy-url 2016-2017/rs/dev_185/ --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -26,6 +28,7 @@
     "@types/youtube": "0.0.30",
     "angular-2-local-storage": "^1.0.1",
     "core-js": "^2.4.1",
+    "express": "^4.15.3",
     "ng2-youtube-player": "0.0.3",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
