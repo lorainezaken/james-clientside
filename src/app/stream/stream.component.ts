@@ -36,41 +36,36 @@ export class StreamComponent implements OnInit {
 		console.log('player state', event.data);
 	}
 
+	signout() {
+		this.localStorage.set('james-jwt', undefined);
+		this.router.navigate(['./home']);
+	}
+
 	ngOnInit() {
-		 this.userService.myData(this.localStorage.get('james-jwt'))
-			.then(res => res.username)
-			.then(res => this.username = res);
-									
-		this.activatedRoute.queryParams.subscribe((params: Params) => {
-			let userDataPromise: Promise<any> = Promise.reject({});
+		let userDataPromise: Promise<any> = Promise.reject({});
 
-			if (this.localStorage.get('james-jwt')) {
-				userDataPromise = this.userService.myData(this.localStorage.get('james-jwt'))
-			} else {
-				// should login first
-				this.router.navigate(['./home']);
-			}
+		if (this.localStorage.get('james-jwt')) {
+			userDataPromise = this.userService.myData(this.localStorage.get('james-jwt'))
+		} else {
+			// should login first
+			this.router.navigate(['./home']);
+		}
 
-			return userDataPromise
-				.then(userData => {
-					this.streamId = userData.streamId;
+		return userDataPromise
+			.then(userData => {
+				this.streamId = userData.streamId;
+				this.username = userData.username;
 
-					return this.streamService.getSongs(userData.id)
-				})
-				.then(songs => {
-					this.streamSongs = songs;
-				})
-		})
+				return this.streamService.getSongs(userData.id)
+					.then(songs => {
+						this.streamSongs = songs;
+						this.currentSong = this.streamSongs[0];
 
-		this.songService.getSongs()
-			.then(songs => {
-				this.streamSongs = songs;
-				this.currentSong = this.streamSongs[0];
-
-				if (!this.currentSong.albumCoverUrl) {
-					this.currentSong.albumCoverUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
-				}
-				this.currentIndex = 0;
+						if (!this.currentSong.albumCoverUrl) {
+							this.currentSong.albumCoverUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
+						}
+						this.currentIndex = 0;
+					})
 			})
 	}
 
