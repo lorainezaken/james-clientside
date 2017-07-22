@@ -14,7 +14,6 @@ import {CompleteComponent} from './complete/complete.component';
 import { NewPlaylistComponent } from './newPlaylist/newPlaylist.component';
 import { FollowingComponent } from './following/following.component';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { LocalStorageModule } from 'angular-2-local-storage';
 import {RouterModule } from '@angular/router';
@@ -53,4 +52,3 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 })
 export class AppModule { }
 enableProdMode();
-platformBrowserDynamic().bootstrapModule(AppModule);
