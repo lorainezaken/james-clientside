@@ -46,13 +46,8 @@ export class StreamComponent implements OnInit {
 
 			if (params['streamId'] == undefined) {
 				if (this.localStorage.get('james-jwt')) {
-<<<<<<< HEAD
-					 streamIdPromise = this.userService.myData(this.localStorage.get('james-jwt'))
-							.then(res => res.streamId);
-=======
 					streamIdPromise = this.userService.myData(this.localStorage.get('james-jwt'))
 						.then(res => res.streamId);
->>>>>>> e10fc62b74fb4b7a14227268170a7dfa4e3f927f
 				} else {
 					// should login first
 					this.router.navigate(['./home']);
@@ -99,19 +94,6 @@ export class StreamComponent implements OnInit {
 		}
 	}
 
-<<<<<<< HEAD
-  nextSong(){
-    if (this.streamSongs[this.currentIndex + 1] !== undefined)
-      {
-    this.currentSong = this.streamSongs[++this.currentIndex];
-    this.player.loadVideoById(this.currentSong.songFileUrl);
-      }
-	}
-		
-	signout(){
-			this.localStorage.set('james-jwt', null);
-	    this.router.navigate(['./home']);
-=======
 	nextSong() {
 		if (this.streamSongs[this.currentIndex + 1] !== undefined) {
 			this.currentSong = this.streamSongs[++this.currentIndex];
@@ -120,6 +102,5 @@ export class StreamComponent implements OnInit {
 			}
 			this.player.loadVideoById(this.currentSong.songFileUrl);
 		}
->>>>>>> e10fc62b74fb4b7a14227268170a7dfa4e3f927f
 	}
 }
