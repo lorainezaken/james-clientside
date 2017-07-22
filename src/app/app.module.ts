@@ -16,6 +16,7 @@ import { FollowingComponent } from './following/following.component';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
+import { LocalStorageModule } from 'angular-2-local-storage';
 import {RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-rounting.module';
 import {MaterialModule} from '@angular/material';
@@ -40,7 +41,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MaterialModule,
     BrowserAnimationsModule,
     YoutubePlayerModule ,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    LocalStorageModule.withConfig({
+        prefix: 'james',
+        storageType: 'localStorage'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent, StreamComponent]

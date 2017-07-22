@@ -3,19 +3,21 @@ import { ArtistService } from './artist.service';
 import { OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AppRoutingModule } from '../app-rounting.module';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
   styleUrls: ['./artist.component.css'],
-   providers: [ArtistService]
+   providers: [ArtistService, UserService]
 })
 export class ArtistComponent implements OnInit {
-   constructor(private artistService: ArtistService, private router: Router, private activatedRoute: ActivatedRoute) {
+   constructor(private artistService: ArtistService, private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute, private localStorge: LocalStorageService) {
      this.selectedArtists = [];
    }
-  artists: string[]
-  selectedArtists: string[]
+  artists: any[]
+  selectedArtists: any[]
 
 
   ngOnInit() {
@@ -36,14 +38,17 @@ export class ArtistComponent implements OnInit {
         this.selectedArtists.push(artist);
   }
 
-  gotoGenres(){
+  gotoGenres() {
     this.router.navigate(['./genre']);
   }
 
   Submit() {
-    this.artistService.addArtistsSongsToStream(this.selectedArtists)
-      .then(() => {
-        this.router.navigate(['./complete'], { queryParams: { streamId: "5947ff8b9712383368c123f5" }});
+    let signupData : any = this.localStorge.get('signupData');
+    signupData = signupData.user;
+    return this.userService.createUser(signupData.username, signupData.email, signupData.password, signupData.profilePic, this.artists.map(a => a.artistId))
+      .then(response => {
+        this.localStorge.set('james-jwt', response.token);
+        this.router.navigate(['./complete'], { queryParams: { streamId: response.streamId }});
       })
   }
 }
