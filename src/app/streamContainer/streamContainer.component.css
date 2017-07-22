@@ -93,3 +93,17 @@ button:hover {
 .playlist-footer{
     float:right;
 }
+.user-followers-circle{
+    display: inline-block;
+    margin-top: 0px;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+    text-align: center;
+    border-radius: 50%;
+}
+.user-followers-circle .text{
+    margin-top:3px;
+    font-size:12px;
+}

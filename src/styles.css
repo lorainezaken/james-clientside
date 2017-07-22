@@ -37,3 +37,21 @@ body {
 .pulled-left{
 	float:left;
 }
+.song-container:nth-child(3n+1){
+     background-color:#58aeac !important;
+ }
+.song-container:nth-child(3n+2){
+     background-color:#c12919 !important;
+ }
+.song-container:nth-child(3n+3){
+     background-color:#d9c004 !important;
+ }
+streamcontainer:nth-child(3n+1) .playlist-box{
+     background-color:#58aeac !important;
+ }
+streamcontainer:nth-child(3n+2) .playlist-box{
+     background-color:#c12919 !important;
+ }
+streamcontainer:nth-child(3n+3) .playlist-box{
+     background-color:#d9c004 !important;
+ }
