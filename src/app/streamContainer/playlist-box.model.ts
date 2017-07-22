@@ -7,4 +7,5 @@ export class PlaylistBox {
 	username: string
 	userProfilePic: string
 	streamPicUrl: string
+	trailer: string
 }
