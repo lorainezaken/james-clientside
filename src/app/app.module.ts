@@ -13,6 +13,8 @@ import {LoginComponent} from './login/login.component';
 import {CompleteComponent} from './complete/complete.component';
 import { NewPlaylistComponent } from './newPlaylist/newPlaylist.component';
 import { FollowingComponent } from './following/following.component';
+import { StreamContainerComponent } from './streamContainer/streamContainer.component';
+
 
 import { LocalStorageModule } from 'angular-2-local-storage';
 import {RouterModule } from '@angular/router';
@@ -27,6 +29,7 @@ import { AppRoutingModule } from './app-rounting.module';
     HomeComponent,
     SignupComponent,
     LoginComponent,
+    StreamContainerComponent,
     CompleteComponent,
     NewPlaylistComponent,
     FollowingComponent
