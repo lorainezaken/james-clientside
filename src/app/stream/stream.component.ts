@@ -24,6 +24,7 @@ export class StreamComponent implements OnInit {
 	player: YT.Player;
 	volume: number;
 	currentIndex: number = 0;
+	username: any;
 
 	savePlayer (player) {
 		this.player = player;
@@ -36,13 +37,17 @@ export class StreamComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		 this.userService.myData(this.localStorage.get('james-jwt'))
+			.then(res => res.username)
+			.then(res => this.username = res);
+									
 		this.activatedRoute.queryParams.subscribe((params: Params) => {
 			let streamIdPromise = Promise.resolve(params['streamId']);
 
 			if (params['streamId'] == undefined) {
 				if (this.localStorage.get('james-jwt')) {
 					 streamIdPromise = this.userService.myData(this.localStorage.get('james-jwt'))
-					  	.then(res => res.streamId);
+							.then(res => res.streamId);
 				} else {
 					// should login first
 					this.router.navigate(['./home']);
@@ -89,5 +94,10 @@ export class StreamComponent implements OnInit {
     this.currentSong = this.streamSongs[++this.currentIndex];
     this.player.loadVideoById(this.currentSong.songFileUrl);
       }
-  }
+	}
+		
+	signout(){
+			this.localStorage.set('james-jwt', null);
+	    this.router.navigate(['./home']);
+	}
 }

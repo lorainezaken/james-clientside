@@ -163,3 +163,15 @@ md-slider{
 #player{
 	display:none;
 }
+.header div{
+    float: right;
+    margin-right: 30px;
+	margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.signout{
+    cursor: pointer;
+    border-bottom: 1px solid;
+    padding-bottom: 2px;
+}
