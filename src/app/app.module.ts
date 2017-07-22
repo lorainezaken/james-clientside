@@ -17,11 +17,6 @@ import { NewPlaylistComponent } from './newPlaylist/newPlaylist.component';
 import { FollowingComponent } from './following/following.component';
 import { StreamContainerComponent } from './streamContainer/streamContainer.component';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
-<<<<<<< HEAD
-
-=======
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
->>>>>>> 10a47f35f5dc6ca131ff096cb9fdccaa52565e68
 import { LocalStorageModule } from 'angular-2-local-storage';
 import {RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-rounting.module';
@@ -49,7 +44,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    YoutubePlayerModule ,
+    YoutubePlayerModule,
     CommonModule,
     FormsModule,
     LocalStorageModule.withConfig({
