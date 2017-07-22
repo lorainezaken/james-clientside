@@ -1,0 +1,32 @@
+.song-container {
+	background-color: #58aeac;
+	margin: 10px;
+	margin-bottom: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 17px;
+    border-style: solid;
+    border-color: transparent;
+}
+
+.song-image{
+    width: 100%;
+    height: 100%;
+}
+.md-35{
+    height:100%;
+    width:35%;
+    float:left;
+}
+.md-65{
+    height:100%;
+    width:65%;
+    float:left;
+}
+.image-padding{
+    width:90%;
+    height: 90%;
+    padding: 5%;
+}

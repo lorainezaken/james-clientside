@@ -6,4 +6,5 @@ export class PlaylistBox {
 	followers: number
 	username: string
 	userProfilePic: string
+	streamPicUrl: string
 }

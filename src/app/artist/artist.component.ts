@@ -45,7 +45,7 @@ export class ArtistComponent implements OnInit {
   Submit() {
     let signupData : any = this.localStorge.get('signupData');
     signupData = signupData.user;
-    return this.userService.createUser(signupData.username, signupData.email, signupData.password, signupData.profilePic, this.artists.map(a => a.artistId))
+    return this.userService.createUser(signupData.username, signupData.email, signupData.password, signupData.profilePic, this.selectedArtists.map(a => a.artistId))
       .then(response => {
         this.localStorge.set('james-jwt', response.token);
         this.router.navigate(['./complete'], { queryParams: { streamId: response.streamId }});

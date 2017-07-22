@@ -20,6 +20,7 @@ export class StreamContainerComponent implements OnInit{
   }
 
   follow(stream) {
-    this.streamService.followStream(stream.streamId);
+    this.stream.isFollowing = true;
+    this.streamService.followStream(stream.streamId)
   }
 }

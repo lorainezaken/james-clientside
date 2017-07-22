@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, URLSearchParams } from '@angular/http';
 // import { Pref} from "./pref";
 
+
 import 'rxjs/add/operator/toPromise';
+import { Song } from '../songs/songData.model';
 
 @Injectable()
 export class SongService {
     constructor(private http: Http) { }
 
-    getSongs(): Promise<any[]> {
+    getSongs(): Promise<Song[]> {
          return this.http.get("http://james-server.herokuapp.com/songs")
              .toPromise()
              .then(response => {
-                 return response.json().songs
+                 return response.json().songs as Song[];
              })
              .catch(this.handleError);
     }
