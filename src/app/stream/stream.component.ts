@@ -14,18 +14,32 @@ import { LocalStorageService } from 'angular-2-local-storage';
 export class StreamComponent implements OnInit {
 
 	constructor(private streamService: StreamService, private songService: SongService, private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService, private localStorage: LocalStorageService) {
-		this.playlistSongs = [];
+		this.streamSongs = [];
 	}
 
-	streamSongs: any[]
-	playlistSongs: any[]
-	streamId: string
+	streamSongs: any[];
+	currentSong: any;
+	streamId: string;
+	songs : any[];
+	player: YT.Player;
+	volume: number;
+	currentIndex: number = 0;
+
+	savePlayer (player) {
+		this.player = player;
+		this.player.loadVideoById(this.currentSong.songFileUrl);
+		console.log('player instance', player)
+	}
+
+	onStateChange(event){
+		console.log('player state', event.data);
+	}
 
 	ngOnInit() {
 		this.activatedRoute.queryParams.subscribe((params: Params) => {
 			let streamIdPromise = Promise.resolve(params['streamId']);
 
-			if (this.streamId == undefined) {
+			if (params['streamId'] == undefined) {
 				if (this.localStorage.get('james-jwt')) {
 					 streamIdPromise = this.userService.myData(this.localStorage.get('james-jwt'))
 					  	.then(res => res.streamId);
@@ -48,14 +62,32 @@ export class StreamComponent implements OnInit {
 
 		this.songService.getSongs()
 			.then(songs => {
-				this.playlistSongs.push(...songs);
+				this.streamSongs = songs;
+				this.currentSong = this.streamSongs[0];
+				this.currentIndex = 0;
 			})
 	}
 
-	addSongToStream(song) {
-		return this.streamService.addSongToStream(this.streamId, song.id)
-			.then(() => {
-				this.streamSongs.push(song);
-			})
-	}
+  addSongToStream(song) {
+    return this.streamService.addSongToStream(this.streamId, song.id)
+      .then(() => {
+        this.streamSongs.push(song);
+      })
+  }
+
+  previousSong(){
+    if (this.streamSongs[this.currentIndex - 1] !== undefined)
+      {
+    this.currentSong = this.streamSongs[--this.currentIndex];
+    this.player.loadVideoById(this.currentSong.songFileUrl);
+      }
+  }
+
+  nextSong(){
+    if (this.streamSongs[this.currentIndex + 1] !== undefined)
+      {
+    this.currentSong = this.streamSongs[++this.currentIndex];
+    this.player.loadVideoById(this.currentSong.songFileUrl);
+      }
+  }
 }

@@ -23,7 +23,13 @@
 				</div>
 			</div>
 			<div class="right-side side">
+				<div id="player">
+					<youtube-player      
+					 (ready)="savePlayer($event)"
+                     (change)="onStateChange($event)"></youtube-player>
+				</div>
 				<div class="stream">
+					
 					<div class="stream-header">
 						<h3>
 							Stream
@@ -37,10 +43,45 @@
 							<img class="song-image" style="background-color:black" src="song.image" />
 						</div>
 						<div class="md-6">
-							<h3>song.name</h3>
-							<div class="song-artist">song.artist</div>
+							<h3>{{currentSong.name}}</h3>
+							<div class="song-artist">{{currentSong.artistName}}</div>
 						</div>
 					</div>
+					<div class="progress">
+						<div class="centered-progress">
+							<div class="song-timing">
+								{{((this.player.getCurrentTime() || 0)/60) | number : '2.0-0'}}:{{(this.player.getCurrentTime() || 0) % 60 | number : '2.0-0'}}
+							</div>
+							<md-progress-bar class="song-progress" color="black" min="0" max="this.player.getDuration()" mode="determinate'" 
+							[value]="( this.player ? ( this.player.getCurrentTime() ? this.player.getCurrentTime() : 0 ) : 0)"><!--(this.player.getCurrentTime()*100)/this.player.getDuration()-->
+							</md-progress-bar>
+							<div class="song-timing">
+							    {{((this.player.getDuration() || 0)/60) | number : '2.0-0'}}:{{(this.player.getDuration() || 0) % 60 | number : '2.0-0'}}
+							</div>
+						</div>
+					</div>
+					<div class="controls">
+						<img src="../assets/back.png"  (click)="previousSong()" class="bigger-control">
+						<img src="../assets/pause.png" (click)="this.player.pauseVideo()" class="control">
+						<img src="../assets/play.png"  (click)="this.player.playVideo()" class="control">
+						<img src="../assets/next.png"  (click)="nextSong()" class="bigger-control">
+						<div class="slider">
+							<md-slider flex value="50" min="0" max="100" id="blue-slider" class="md-primary"></md-slider>
+						</div>
+					</div>
+					<ul class="song-list">
+						<li *ngFor="let song of streamSongs; let i = index" class="song" [class.selected]="song == currentSong">
+							<div class="index pulled-left">
+								{{i+1}}.
+							</div>
+							<div class="song-name pulled-left">
+								   {{song.name}}
+							</div>
+							<div class="pulled-right">
+								{{song.length}}
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>

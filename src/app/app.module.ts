@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { HttpModule }    from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { ArtistComponent } from './artist/artist.component';
@@ -15,11 +16,13 @@ import {SongsComponent} from './songs/songs.component';
 import { NewPlaylistComponent } from './newPlaylist/newPlaylist.component';
 import { FollowingComponent } from './following/following.component';
 import { StreamContainerComponent } from './streamContainer/streamContainer.component';
-
-
+import { YoutubePlayerModule } from 'ng2-youtube-player';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import {RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-rounting.module';
+import {MaterialModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,10 @@ import { AppRoutingModule } from './app-rounting.module';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    YoutubePlayerModule ,
+    CommonModule,
     FormsModule,
     LocalStorageModule.withConfig({
         prefix: 'james',
@@ -47,6 +54,8 @@ import { AppRoutingModule } from './app-rounting.module';
     })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, StreamComponent]
 })
 export class AppModule { }
+enableProdMode();
+platformBrowserDynamic().bootstrapModule(AppModule);

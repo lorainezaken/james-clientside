@@ -13,7 +13,7 @@ import { FollowingComponent } from './following/following.component';
 import { SongsComponent } from './songs/songs.component';
 
 const appRoutes: Routes =[
-    { path: '', redirectTo: '/index', pathMatch:'full'},
+    { path: '', redirectTo: '/index.html', pathMatch:'full'},
     { path: 'home', component: HomeComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
