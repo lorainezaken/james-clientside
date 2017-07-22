@@ -10,8 +10,8 @@ import 'rxjs/add/operator/toPromise';
 export class StreamService {
     constructor(private http: Http, private localStorage: LocalStorageService) { }
 
-    getSongs(streamId): Promise<string[]> {
-        return this.http.get("http://james-server.herokuapp.com/stream?userId=5947ff8a9712383368c123f4")
+    getSongs(userId): Promise<string[]> {
+        return this.http.get(`http://james-server.herokuapp.com/stream?userId=${userId}`)
             .toPromise()
             .then(response => {
                 return response.json().stream.songs

@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SongService } from '../stream/song.service';
+import { StreamService } from '../stream/stream.service';
+import { UserService } from '../user.service';
 import { Song } from '../songs/songData.model';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'songs',
@@ -14,7 +17,7 @@ export class SongsComponent implements OnInit {
   public songs: Song[] = [];
   public isLoading: boolean = true;
 
-  constructor(private router: Router, private songService: SongService) {
+  constructor(private router: Router, private songService: SongService, private streamService: StreamService, private userService:UserService, private localStorage: LocalStorageService) {
   }
 
   ngOnInit() {
@@ -28,5 +31,12 @@ export class SongsComponent implements OnInit {
           return song;
         }));
       })
+  }
+
+  add(song) {
+    this.userService.myData(this.localStorage.get('james-jwt'))
+      .then(res => {
+          this.streamService.addSongToStream(res.streamId, song.id);
+      });
   }
 }

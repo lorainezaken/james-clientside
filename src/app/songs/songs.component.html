@@ -6,5 +6,6 @@
 	</div>
 	<h1>{{song.name}}</h1>
 	<h2>{{song.artistName || 'unknown'}}</h2>
+	<button class="playlist-button" (click)="add(song)">add to stream</button>
 </div>
 <h1 *ngIf="isLoading">Loading</h1>

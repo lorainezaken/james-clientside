@@ -37,23 +37,20 @@ export class StreamComponent implements OnInit {
 
 	ngOnInit() {
 		this.activatedRoute.queryParams.subscribe((params: Params) => {
-			let streamIdPromise = Promise.resolve(params['streamId']);
+			let userDataPromise: Promise<any> = Promise.reject({});
 
-			if (params['streamId'] == undefined) {
-				if (this.localStorage.get('james-jwt')) {
-					streamIdPromise = this.userService.myData(this.localStorage.get('james-jwt'))
-						.then(res => res.streamId);
-				} else {
-					// should login first
-					this.router.navigate(['./home']);
-				}
+			if (this.localStorage.get('james-jwt')) {
+				userDataPromise = this.userService.myData(this.localStorage.get('james-jwt'))
+			} else {
+				// should login first
+				this.router.navigate(['./home']);
 			}
 
-			return streamIdPromise
-				.then(streamId => {
-					this.streamId = streamId;
+			return userDataPromise
+				.then(userData => {
+					this.streamId = userData.streamId;
 
-					return this.streamService.getSongs(this.streamId)
+					return this.streamService.getSongs(userData.id)
 				})
 				.then(songs => {
 					this.streamSongs = songs;

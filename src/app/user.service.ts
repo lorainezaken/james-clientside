@@ -34,8 +34,8 @@ export class UserService {
 	}
 
 	myData(jwt): Promise<any> {
-		return this.http.post("http://james-server.herokuapp.com/me", {
-			access_token: jwt
+		return this.http.post(`http://james-server.herokuapp.com/me?access_token=${jwt}`, {
+			
 		}).toPromise()
 			.then(response => {
 				return response.json();
