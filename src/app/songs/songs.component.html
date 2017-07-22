@@ -1,0 +1,10 @@
+<div class="song-container" *ngFor="let song of songs">
+	<div class="md-35">
+		<div class="image-padding">
+			<img class="song-image" src="{{song.albumCoverUrl}}" style="background-color:black" />
+		</div>
+	</div>
+	<h1>{{song.name}}</h1>
+	<h2>{{song.artistName || 'unknown'}}</h2>
+</div>
+<h1 *ngIf="isLoading">Loading</h1>

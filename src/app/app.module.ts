@@ -10,11 +10,18 @@ import { StreamComponent } from './stream/stream.component';
 import {GenreComponent} from './genre/genre.component';
 import {HomeComponent} from './home/home.component';
 import {SignupComponent} from './signup/signup.component';
+import {LoginComponent} from './login/login.component';
 import {CompleteComponent} from './complete/complete.component';
+import {SongsComponent} from './songs/songs.component';
 import { NewPlaylistComponent } from './newPlaylist/newPlaylist.component';
 import { FollowingComponent } from './following/following.component';
+import { StreamContainerComponent } from './streamContainer/streamContainer.component';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
+<<<<<<< HEAD
 
+=======
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+>>>>>>> 10a47f35f5dc6ca131ff096cb9fdccaa52565e68
 import { LocalStorageModule } from 'angular-2-local-storage';
 import {RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-rounting.module';
@@ -29,6 +36,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     GenreComponent,
     HomeComponent,
     SignupComponent,
+    SongsComponent,
+    LoginComponent,
+    StreamContainerComponent,
     CompleteComponent,
     NewPlaylistComponent,
     FollowingComponent

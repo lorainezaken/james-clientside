@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'complete',
@@ -9,13 +9,17 @@ import { Router } from '@angular/router';
   providers: []
 })
 export class CompleteComponent implements OnInit{
-  constructor(private router: Router) {
+  private streamId: string;
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
+    	this.activatedRoute.queryParams.subscribe((params: Params) => {
+        this.streamId = params['streamId'];
+      });
   }
 
   goToStream() {
-      this.router.navigate(['./stream'], { queryParams: { streamId: "5947ff8b9712383368c123f5" } });
+      this.router.navigate(['./stream'], { queryParams: { streamId: this.streamId} });
   }
 }

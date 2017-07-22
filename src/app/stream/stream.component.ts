@@ -1,50 +1,72 @@
 import { Component, OnInit } from '@angular/core';
 import { StreamService } from './stream.service';
-import {SongService} from './song.service';
+import { SongService } from './song.service';
+import { UserService } from '../user.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
-  selector: 'app-stream',
-  templateUrl: './stream.component.html',
-  styleUrls: ['./stream.component.css'],
-  providers: [ StreamService, SongService ]
+	selector: 'app-stream',
+	templateUrl: './stream.component.html',
+	styleUrls: ['./stream.component.css'],
+	providers: [StreamService, SongService, UserService]
 })
 export class StreamComponent implements OnInit {
 
-  constructor(private streamService: StreamService, private songService: SongService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.currentSong = {};
-  }
+	constructor(private streamService: StreamService, private songService: SongService, private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService, private localStorage: LocalStorageService) {
+		this.streamSongs = [];
+	}
 
-  streamSongs: any[];
-  currentSong: any;
-  streamId: string;
-  songs : any[];
-  player: YT.Player;
-  volume: number;
-  currentIndex: number = 0;
+	streamSongs: any[];
+	currentSong: any;
+	streamId: string;
+	songs : any[];
+	player: YT.Player;
+	volume: number;
+	currentIndex: number = 0;
 
-  savePlayer (player) {
-    this.player = player;
-    this.player.loadVideoById(this.currentSong.songFileUrl);
-    console.log('player instance', player)
-  }
+	savePlayer (player) {
+		this.player = player;
+		this.player.loadVideoById(this.currentSong.songFileUrl);
+		console.log('player instance', player)
+	}
 
-  onStateChange(event){
-    console.log('player state', event.data);
-  }
+	onStateChange(event){
+		console.log('player state', event.data);
+	}
 
-  ngOnInit() {
-      this.activatedRoute.queryParams.subscribe((params: Params) => {
-        this.streamId = params['streamId'];
+	ngOnInit() {
+		this.activatedRoute.queryParams.subscribe((params: Params) => {
+			let streamIdPromise = Promise.resolve(params['streamId']);
 
-        this.streamService.getSongs(this.streamId)
-          .then(songs => {
-            this.streamSongs = songs;
-            this.currentSong = this.streamSongs[0];
-            this.currentIndex = 0;
-          });
-      })
-  }
+			if (params['streamId'] == undefined) {
+				if (this.localStorage.get('james-jwt')) {
+					 streamIdPromise = this.userService.myData(this.localStorage.get('james-jwt'))
+					  	.then(res => res.streamId);
+				} else {
+					// should login first
+					this.router.navigate(['./home']);
+				}
+			}
+
+			return streamIdPromise
+				.then(streamId => {
+					this.streamId = streamId;
+					
+					return this.streamService.getSongs(this.streamId)
+				})
+				.then(songs => {
+					this.streamSongs = songs;
+				})
+		})
+
+		this.songService.getSongs()
+			.then(songs => {
+				this.streamSongs = songs;
+				this.currentSong = this.streamSongs[0];
+				this.currentIndex = 0;
+			})
+	}
 
   addSongToStream(song) {
     return this.streamService.addSongToStream(this.streamId, song.id)
