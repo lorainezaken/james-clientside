@@ -21,7 +21,12 @@ export class SongsComponent implements OnInit {
     this.songService.getSongs()
       .then(songs => {
         this.isLoading = false;
-        this.songs.push(...songs);
+        this.songs.push(...songs.map(song => {
+          if (!song.albumCoverUrl) {
+            song.albumCoverUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
+          }
+          return song;
+        }));
       })
   }
 }

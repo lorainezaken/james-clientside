@@ -18,20 +18,20 @@ export class StreamComponent implements OnInit {
 	}
 
 	streamSongs: any[];
-	currentSong: any;
+	currentSong: any = {};
 	streamId: string;
-	songs : any[];
+	songs: any[];
 	player: YT.Player;
 	volume: number;
 	currentIndex: number = 0;
 
-	savePlayer (player) {
+	savePlayer(player) {
 		this.player = player;
 		this.player.loadVideoById(this.currentSong.songFileUrl);
 		console.log('player instance', player)
 	}
 
-	onStateChange(event){
+	onStateChange(event) {
 		console.log('player state', event.data);
 	}
 
@@ -41,8 +41,8 @@ export class StreamComponent implements OnInit {
 
 			if (params['streamId'] == undefined) {
 				if (this.localStorage.get('james-jwt')) {
-					 streamIdPromise = this.userService.myData(this.localStorage.get('james-jwt'))
-					  	.then(res => res.streamId);
+					streamIdPromise = this.userService.myData(this.localStorage.get('james-jwt'))
+						.then(res => res.streamId);
 				} else {
 					// should login first
 					this.router.navigate(['./home']);
@@ -52,7 +52,7 @@ export class StreamComponent implements OnInit {
 			return streamIdPromise
 				.then(streamId => {
 					this.streamId = streamId;
-					
+
 					return this.streamService.getSongs(this.streamId)
 				})
 				.then(songs => {
@@ -64,30 +64,38 @@ export class StreamComponent implements OnInit {
 			.then(songs => {
 				this.streamSongs = songs;
 				this.currentSong = this.streamSongs[0];
+
+				if (!this.currentSong.albumCoverUrl) {
+					this.currentSong.albumCoverUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
+				}
 				this.currentIndex = 0;
 			})
 	}
 
-  addSongToStream(song) {
-    return this.streamService.addSongToStream(this.streamId, song.id)
-      .then(() => {
-        this.streamSongs.push(song);
-      })
-  }
+	addSongToStream(song) {
+		return this.streamService.addSongToStream(this.streamId, song.id)
+			.then(() => {
+				this.streamSongs.push(song);
+			})
+	}
 
-  previousSong(){
-    if (this.streamSongs[this.currentIndex - 1] !== undefined)
-      {
-    this.currentSong = this.streamSongs[--this.currentIndex];
-    this.player.loadVideoById(this.currentSong.songFileUrl);
-      }
-  }
+	previousSong() {
+		if (this.streamSongs[this.currentIndex - 1] !== undefined) {
+			this.currentSong = this.streamSongs[--this.currentIndex];
+			if (!this.currentSong.albumCoverUrl) {
+				this.currentSong.albumCoverUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
+			}
+			this.player.loadVideoById(this.currentSong.songFileUrl);
+		}
+	}
 
-  nextSong(){
-    if (this.streamSongs[this.currentIndex + 1] !== undefined)
-      {
-    this.currentSong = this.streamSongs[++this.currentIndex];
-    this.player.loadVideoById(this.currentSong.songFileUrl);
-      }
-  }
+	nextSong() {
+		if (this.streamSongs[this.currentIndex + 1] !== undefined) {
+			this.currentSong = this.streamSongs[++this.currentIndex];
+			if (!this.currentSong.albumCoverUrl) {
+				this.currentSong.albumCoverUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
+			}
+			this.player.loadVideoById(this.currentSong.songFileUrl);
+		}
+	}
 }
