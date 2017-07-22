@@ -1,0 +1,26 @@
+<span></span>
+<main class="signup">
+	<div class="floating-corner-container">
+		<div class="james-corner-box">
+			<span class="james-corner-logo">
+				James
+			</span>
+		</div>
+	</div>
+	<span></span>
+	<div class="login-body">
+		<span></span>
+		<div class="login-content">
+			<form #signupForm="ngForm" (ngSubmit)="submit()">
+				<input #email type="email" placeholder="e-mail" [(ngModel)]="model.email" name="email" required/>
+				<input #password type="password" placeholder="password" [(ngModel)]="model.password" name="password" required/>
+				<button type="submit" [disabled]="!signupForm.form.valid">Submit</button>
+				<div class="alert alert-danger" *ngIf="loginError">Invalid email or password.</div>
+			</form>
+			<span style="flex-grow: 1"></span>
+		</div>
+		<span></span>
+	</div>
+	<span></span>
+</main>
+<span></span>
