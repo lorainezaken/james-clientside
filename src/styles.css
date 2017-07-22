@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/custom.css";
+
 body {
 	margin: 0;
     position: absolute;
@@ -28,4 +30,10 @@ body {
 	font-family: Arista;
 	font-weight: 500;
 	font-size:50px;
+}
+.pulled-right{
+	float:right;
+}
+.pulled-left{
+	float:left;
 }

@@ -12,12 +12,26 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class StreamComponent implements OnInit {
 
   constructor(private streamService: StreamService, private songService: SongService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.playlistSongs = [];
+    this.currentSong = {};
   }
 
-  streamSongs: any[]
-  playlistSongs: any[]
-  streamId: string
+  streamSongs: any[];
+  currentSong: any;
+  streamId: string;
+  songs : any[];
+  player: YT.Player;
+  volume: number;
+  currentIndex: number = 0;
+
+  savePlayer (player) {
+    this.player = player;
+    this.player.loadVideoById(this.currentSong.songFileUrl);
+    console.log('player instance', player)
+  }
+
+  onStateChange(event){
+    console.log('player state', event.data);
+  }
 
   ngOnInit() {
       this.activatedRoute.queryParams.subscribe((params: Params) => {
@@ -26,13 +40,10 @@ export class StreamComponent implements OnInit {
         this.streamService.getSongs(this.streamId)
           .then(songs => {
             this.streamSongs = songs;
-          })
+            this.currentSong = this.streamSongs[0];
+            this.currentIndex = 0;
+          });
       })
-
-      this.songService.getSongs()
-        .then(songs => {
-          this.playlistSongs.push(...songs);
-        })
   }
 
   addSongToStream(song) {
@@ -40,5 +51,21 @@ export class StreamComponent implements OnInit {
       .then(() => {
         this.streamSongs.push(song);
       })
+  }
+
+  previousSong(){
+    if (this.streamSongs[this.currentIndex - 1] !== undefined)
+      {
+    this.currentSong = this.streamSongs[--this.currentIndex];
+    this.player.loadVideoById(this.currentSong.songFileUrl);
+      }
+  }
+
+  nextSong(){
+    if (this.streamSongs[this.currentIndex + 1] !== undefined)
+      {
+    this.currentSong = this.streamSongs[++this.currentIndex];
+    this.player.loadVideoById(this.currentSong.songFileUrl);
+      }
   }
 }

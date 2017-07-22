@@ -92,3 +92,74 @@ main {
 	margin-top:0px;
 	margin-bottom:5px;
 }
+.progress{
+    margin: 0 auto;
+	margin-top: 155px;
+	display: flex;
+}
+.centered-progress{
+    width: 100%;
+    display: inline-flex;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+.song-progress{
+    min-width: 60%;
+    height: 12px;
+	border-radius: 7px;
+    margin-top: 5px;
+}
+.controls{
+    display: flex;
+    margin: 17px 30px;
+}
+.slider{
+    width: 75%;
+    margin-left: 10px;
+}
+.control {
+    width: 15px;
+    margin-right: 12px;
+    height: 15px;
+    margin-top: 4px;
+	cursor: pointer;
+}
+.bigger-control {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+	margin-top: 4px;
+	cursor: pointer;
+}
+md-slider{
+	width:100%;
+}
+.slider{
+	margin-top: -12px;
+}
+.song-list{
+	padding:0 30px;
+	list-style-type: none;
+    height: 49%;
+    overflow: hidden;
+}
+.song{
+	height: 30px;
+	font-size:18px; 
+}
+.song.selected .index{
+	display: none;
+}
+.song.selected{
+	font-size: 20px;
+	color:black;
+    font-weight: 600;
+}
+.song .index {
+	margin-right: 5px;
+}
+#player{
+	display:none;
+}

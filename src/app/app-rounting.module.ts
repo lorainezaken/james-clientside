@@ -11,7 +11,7 @@ import { NewPlaylistComponent } from './newPlaylist/newPlaylist.component';
 import { FollowingComponent } from './following/following.component';
 
 const appRoutes: Routes =[
-    { path: '', redirectTo: '/index', pathMatch:'full'},
+    { path: '', redirectTo: '/index.html', pathMatch:'full'},
     { path: 'home', component: HomeComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'genre', component: GenreComponent },
